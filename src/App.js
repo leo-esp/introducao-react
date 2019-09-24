@@ -28,7 +28,7 @@ export default class App extends Component {
           </div>
         </div>
 
-        <Container>
+        {/* <Container>
           <Row>
             <Col md={{ size: 8, offset: 2 }}>
               <Form inline>
@@ -55,7 +55,7 @@ export default class App extends Component {
               </Form >
             </Col>
           </Row>
-        </Container>
+        </Container> */}
 
 
         {
