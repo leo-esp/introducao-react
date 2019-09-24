@@ -1,61 +1,66 @@
 import React, { Component } from 'react'
 import { Container, Row, Col } from 'reactstrap';
 import characters from './mock';
+import Header from './Header'
 
 export default class Character extends Component {
+
+  constructor() {
+    super();
+    this.state = {
+      characters: characters
+    }
+  }
+  
   render() {
     return (
       <div>
-        <div>
-          <div className="jumbotron" style={{ height: 50, display: 'flex', alignItems: 'center', justifyContent: 'space-around' }}>
-            <img src="https://logodownload.org/wp-content/uploads/2017/05/marvel-logo.png" style={{ width: 200 }} />
-          </div>
-        </div>
+        <Header />
         <Container>
           <Row>
             <Col md={6}>
-              <img src={`${characters[0].thumbnail.path}.${characters[0].thumbnail.extension}`} alt="..." style={{width: 'inherit'}}/>
+              <img src={`${this.state.characters[0].thumbnail.path}.${this.state.characters[0].thumbnail.extension}`} alt="..." style={{width: 'inherit'}}/>
             </Col>
             <Col md={6}>
               <Row>
                 <Col md={6}>
                   <h5>Quadrinhos</h5>
                   <ul class="list-group">
-                    <li class="list-group-item">Cras justo odio</li>
-                    <li class="list-group-item">Dapibus ac facilisis in</li>
-                    <li class="list-group-item">Morbi leo risus</li>
-                    <li class="list-group-item">Porta ac consectetur ac</li>
-                    <li class="list-group-item">Vestibulum at eros</li>
+                    {
+                      this.state.characters[0].comics.items.map((comic) => (
+                        <li class="list-group-item">{comic.name}</li>
+                      ))
+                    }
                   </ul>
                 </Col>
                 <Col md={6}>
                   <h5>Séries</h5>
                   <ul class="list-group">
-                    <li class="list-group-item">Cras justo odio</li>
-                    <li class="list-group-item">Dapibus ac facilisis in</li>
-                    <li class="list-group-item">Morbi leo risus</li>
-                    <li class="list-group-item">Porta ac consectetur ac</li>
-                    <li class="list-group-item">Vestibulum at eros</li>
+                    {
+                      this.state.characters[0].series.items.map((serie) => (
+                        <li class="list-group-item">{serie.name}</li>
+                      ))
+                    }
                   </ul>
                 </Col>
                 <Col md={6}>
                   <h5>Histórias</h5>
                   <ul class="list-group">
-                    <li class="list-group-item">Cras justo odio</li>
-                    <li class="list-group-item">Dapibus ac facilisis in</li>
-                    <li class="list-group-item">Morbi leo risus</li>
-                    <li class="list-group-item">Porta ac consectetur ac</li>
-                    <li class="list-group-item">Vestibulum at eros</li>
+                  {
+                      this.state.characters[0].stories.items.map((story) => (
+                        <li class="list-group-item">{story.name}</li>
+                      ))
+                    }
                   </ul>
                 </Col>
                 <Col md={6}>
                   <h5>Eventos</h5>
                   <ul class="list-group">
-                    <li class="list-group-item">Cras justo odio</li>
-                    <li class="list-group-item">Dapibus ac facilisis in</li>
-                    <li class="list-group-item">Morbi leo risus</li>
-                    <li class="list-group-item">Porta ac consectetur ac</li>
-                    <li class="list-group-item">Vestibulum at eros</li>
+                  {
+                      this.state.characters[0].events.items.map((event) => (
+                        <li class="list-group-item">{event.name}</li>
+                      ))
+                    }
                   </ul>
                 </Col>
               </Row>
