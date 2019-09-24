@@ -1,42 +1,16 @@
-import React, { Component } from 'react'
-import './App.css';
-import characters from './mock';
-import api from "./services";
-import Card from './Card'
-import FormMarvel from './FormMarvel'
-import Header from './Header'
+import React from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import Biblioteca from './Biblioteca'
+import Character from './Character'
 
-export default class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      characters: characters
-    }
-  }
 
+export default class App extends React.Component {
   render() {
     return (
-      <div className="App">
-        
-        <Header />
-        <FormMarvel />
-        
-        {
-          this.state.characters.length > 0 &&
-          <div className="container pb-5">
-            <div className="row mt-5">
-
-              {
-                this.state.characters.map((character) => (
-                  <div className="col-md-3">
-                    <Card data={character}  />
-                  </div>
-                ))
-              }
-            </div>
-          </div>
-        }
-      </div >
+      <Router>
+        <Route exact path="/" component={Biblioteca} />
+        <Route path="/personagem/:id" component={Character} />
+      </Router>
     );
   }
 }
